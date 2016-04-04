@@ -1,10 +1,14 @@
 package examplewtest.midopc.ezzappdepartments;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,18 +29,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-
-
-
-
-
-
-
-
-
-
         //Get Data from Service
         final String URL="http://mobileapp.ezzmedicalcare.com/";
         Retrofit retrofit=new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create()).build();
@@ -45,11 +37,6 @@ public class MainActivity extends AppCompatActivity {
         connection.enqueue(new Callback<List<Model>>() {
             @Override
             public void onResponse(Call<List<Model>> call, Response<List<Model>> response) {
-
-
-
-
-
 
                 if (response.isSuccessful()) {
 
@@ -73,26 +60,21 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
+        getMenuInflater().inflate(R.menu.option_menu,menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id=item.getItemId();
+        if(id==R.id.contacts)
+           startActivity(new Intent(this,Contacts.class));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return super.onOptionsItemSelected(item);
     }
 }

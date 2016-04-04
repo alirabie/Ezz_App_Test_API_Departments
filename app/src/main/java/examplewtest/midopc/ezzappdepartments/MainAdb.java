@@ -1,25 +1,14 @@
 package examplewtest.midopc.ezzappdepartments;
-
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
-
 import de.hdodenhof.circleimageview.CircleImageView;
-import examplewtest.midopc.ezzappdepartments.API.GetApi;
 import examplewtest.midopc.ezzappdepartments.POJO.Models.Model;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Mido PC on 4/4/2016.
@@ -44,7 +33,7 @@ public class MainAdb extends RecyclerView.Adapter<MainAdb.VH> {
     @Override
     public void onBindViewHolder(VH holder, int position) {
         Picasso.with(holder.itemView.getContext()).load(URL+models.get(position).getImg()).into(holder.imageView);
-   holder.imageView.setBorderWidth(4);
+        holder.imageView.setBorderWidth(4);
         holder.imageView.setBorderColor(holder.itemView.getResources().getColor(R.color.colorAccent));
         holder.textView.setText(models.get(position).getNameArabic());
 
